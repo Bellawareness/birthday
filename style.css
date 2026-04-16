@@ -1447,13 +1447,15 @@ html {
 
     .birthday-card {
         width: min(96vw, 560px);
-        max-height: calc(100dvh - 20px);
+        max-height: calc(100vh - 20px);
         height: auto;
         margin: 0 auto;
         border-radius: 16px;
         display: flex;
         flex-direction: column;
-        overflow: hidden;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
     }
 
     .card-front {
@@ -1471,13 +1473,13 @@ html {
         display: flex;
         flex-direction: column;
         min-height: 0;
-        overflow: hidden;
+        overflow: visible;
         flex: 1;
     }
 
     .card-collage {
         width: 100%;
-        height: clamp(140px, 28vh, 220px);
+        height: clamp(180px, 38vh, 290px);
         border-right: none;
         border-bottom: 1px solid rgba(255, 105, 180, 0.16);
         flex-shrink: 0;
@@ -1485,26 +1487,26 @@ html {
     }
 
     .collage-photo {
-        object-fit: contain;
-        object-position: center;
+        object-fit: cover;
+        object-position: center top;
         background: #fff;
     }
 
     .card-message {
         padding: 14px;
-        gap: 8px;
+        gap: 9px;
         flex: 1;
         min-height: 0;
-        overflow-y: auto;
+        overflow: visible;
     }
 
     .card-message p {
-        font-size: 0.98rem;
-        line-height: 1.55;
+        font-size: 1.02rem;
+        line-height: 1.62;
     }
 
     .card-message p:nth-child(1) {
-        font-size: 1.02rem;
+        font-size: 1.08rem;
     }
 
     .close-card {
@@ -1513,6 +1515,9 @@ html {
         width: 30px;
         height: 30px;
         font-size: 1rem;
+        position: sticky;
+        margin-left: auto;
+        z-index: 20;
     }
 
     .slideshow-container {
@@ -1588,7 +1593,7 @@ html {
 
     .birthday-card {
         width: 100%;
-        max-height: calc(100dvh - 12px);
+        max-height: calc(100vh - 12px);
         border-radius: 12px;
     }
 
@@ -1601,7 +1606,7 @@ html {
     }
 
     .card-collage {
-        height: clamp(120px, 24vh, 170px);
+        height: clamp(150px, 32vh, 230px);
     }
 
     .card-message {
@@ -1610,12 +1615,12 @@ html {
     }
 
     .card-message p {
-        font-size: 0.93rem;
-        line-height: 1.5;
+        font-size: 0.98rem;
+        line-height: 1.58;
     }
 
     .card-message p:nth-child(1) {
-        font-size: 0.98rem;
+        font-size: 1.04rem;
     }
 
     .close-card {
