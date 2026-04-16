@@ -43,6 +43,7 @@ function showSlide(n) {
 function setupSlideshow() {
     showSlide(currentSlideIndex);
 }
+
 function createParticles() {
     const particlesContainer = document.querySelector('.particles');
     const particleCount = 30;
@@ -72,8 +73,6 @@ function openCard() {
     const cardContainer = document.getElementById('cardContainer');
     cardContainer.classList.add('active');
     createConfetti();
-
-    // Play sound effect if desired
     playCelebration();
 }
 
@@ -97,57 +96,6 @@ document.addEventListener('keydown', function(e) {
         closeCard();
     }
 });
-
-// Handle photo uploads
-function setupPhotoUploads() {
-    for (let i = 1; i <= 6; i++) {
-        const fileInput = document.getElementById(`upload${i}`);
-        const slot = fileInput.closest('.photo-slot');
-        const placeholder = slot.querySelector('.placeholder');
-        const image = slot.querySelector('.uploaded-image');
-
-        // Check if image has src (pre-loaded)
-        if (image && image.src && image.src !== '') {
-            image.style.display = 'block';
-            placeholder.style.display = 'none';
-        }
-
-        fileInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const slot = fileInput.closest('.photo-slot');
-                    const placeholder = slot.querySelector('.placeholder');
-                    const image = slot.querySelector('.uploaded-image');
-
-                    image.src = event.target.result;
-                    image.style.display = 'block';
-                    placeholder.style.display = 'none';
-
-                    // Save to localStorage
-                    localStorage.setItem(`photo${i}`, event.target.result);
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    }
-
-    // Load saved photos from localStorage
-    for (let i = 1; i <= 6; i++) {
-        const savedPhoto = localStorage.getItem(`photo${i}`);
-        if (savedPhoto) {
-            const fileInput = document.getElementById(`upload${i}`);
-            const slot = fileInput.closest('.photo-slot');
-            const placeholder = slot.querySelector('.placeholder');
-            const image = slot.querySelector('.uploaded-image');
-
-            image.src = savedPhoto;
-            image.style.display = 'block';
-            placeholder.style.display = 'none';
-        }
-    }
-}
 
 // Create confetti effect
 function createConfetti() {
@@ -211,7 +159,7 @@ function setupScrollAnimations() {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.wish-card, .photo-slot, .video-container').forEach(el => {
+    document.querySelectorAll('.wish-card, .video-container').forEach(el => {
         observer.observe(el);
     });
 }
