@@ -36,7 +36,7 @@ function showSlide(n) {
     // Auto-advance after 4 seconds
     slideShowTimeout = setTimeout(() => {
         showSlide(++currentSlideIndex);
-    }, 4000);
+    }, 3000);
 }
 
 // Initialize slideshow
@@ -74,6 +74,19 @@ function openCard() {
     cardContainer.classList.add('active');
     createConfetti();
     playCelebration();
+
+    // Show scroll hint, hide after 3.5s or on first scroll
+    const hint = document.getElementById('cardScrollHint');
+    const card = cardContainer.querySelector('.birthday-card');
+    if (hint && card) {
+        hint.classList.remove('hidden');
+        const hideHint = () => hint.classList.add('hidden');
+        const timer = setTimeout(hideHint, 3500);
+        card.addEventListener('scroll', () => {
+            clearTimeout(timer);
+            hideHint();
+        }, { once: true });
+    }
 }
 
 // Close the birthday card
