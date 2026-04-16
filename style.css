@@ -288,15 +288,15 @@ body {
 /* Photo Collage Styling */
 .card-collage {
     position: relative;
-    width: 200px;
+    width: 232px;
     height: 100%;
-    background: linear-gradient(135deg, #ffe6f0, #ffb6c1);
+    background: linear-gradient(135deg, #fff7fb, #ffe6f0);
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    border-right: 3px dashed #ff69b4;
+    border-right: 1px solid rgba(255, 105, 180, 0.18);
     overflow: hidden;
 }
 
@@ -306,7 +306,7 @@ body {
     height: 100%;
     border-radius: 0;
     object-fit: cover;
-    object-position: center top;
+    object-position: center 22%;
     box-shadow: none;
     border: none;
     animation: photoFadeIn 0.8s ease-out forwards;
@@ -474,7 +474,7 @@ body {
     width: 100%;
     padding-bottom: 75%; /* 4:3 aspect ratio */
     overflow: hidden;
-    background: #f0f0f0;
+    background: #fff;
 }
 
 .slide {
@@ -488,6 +488,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #fff;
 }
 
 .slide.active {
@@ -531,14 +532,16 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 105, 180, 0.7);
+    background: rgba(255, 105, 180, 0.82);
     color: white;
     border: none;
-    font-size: 1.5rem;
-    padding: 15px 20px;
+    font-size: 1.1rem;
+    width: 38px;
+    height: 38px;
+    padding: 0;
     cursor: pointer;
     z-index: 10;
-    border-radius: 5px;
+    border-radius: 999px;
     transition: all 0.3s ease;
     font-weight: bold;
 }
@@ -560,27 +563,27 @@ body {
 .slide-indicators {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    padding: 20px 0;
-    background: linear-gradient(135deg, #fff0f5, #ffe6f0);
+    gap: 10px;
+    padding: 14px 0 16px;
+    background: #fff;
 }
 
 .indicator {
-    width: 12px;
-    height: 12px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
-    background: rgba(255, 105, 180, 0.4);
+    background: rgba(255, 105, 180, 0.35);
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
 }
 
 .indicator.active {
     background: #ff69b4;
-    width: 16px;
-    height: 16px;
+    width: 11px;
+    height: 11px;
     border-color: #da70d6;
-    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    box-shadow: 0 0 8px rgba(255, 105, 180, 0.35);
 }
 
 .indicator:hover {
@@ -1112,8 +1115,8 @@ video {
 }
 
 .slide-nav {
-    min-width: 44px;
-    min-height: 44px;
+    min-width: 38px;
+    min-height: 38px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1161,7 +1164,7 @@ video {
     }
 
     .card-collage {
-        width: 170px;
+        width: 190px;
     }
 
     .card-message {
@@ -1280,9 +1283,13 @@ video {
 
     .card-collage {
         width: 100%;
-        height: 120px;
+        height: 150px;
         border-right: none;
-        border-bottom: 3px dashed #ff69b4;
+        border-bottom: 1px solid rgba(255, 105, 180, 0.18);
+    }
+
+    .collage-photo {
+        object-position: center 18%;
     }
 
     .card-message {
@@ -1333,7 +1340,7 @@ video {
 
     .slide-indicators {
         gap: 6px;
-        padding: 14px 52px;
+        padding: 12px 44px 14px;
         flex-wrap: wrap;
     }
 
