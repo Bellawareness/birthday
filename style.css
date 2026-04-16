@@ -80,6 +80,17 @@ body {
     position: relative;
     z-index: 3;
     letter-spacing: 2px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.18em 0.3em;
+}
+
+.headline-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
 }
 
 .letter {
@@ -90,24 +101,10 @@ body {
     background-clip: text;
     text-shadow: none;
     animation: bounce 1.2s ease-in-out infinite;
+    animation-delay: var(--bounce-delay, 0s);
     margin: 0 3px;
     filter: drop-shadow(2px 2px 4px rgba(255, 105, 180, 0.3));
 }
-
-.letter:nth-child(1) { animation-delay: 0s; }
-.letter:nth-child(2) { animation-delay: 0.05s; }
-.letter:nth-child(3) { animation-delay: 0.1s; }
-.letter:nth-child(4) { animation-delay: 0.15s; }
-.letter:nth-child(5) { animation-delay: 0.2s; }
-.letter:nth-child(6) { animation-delay: 0.25s; }
-.letter:nth-child(7) { animation-delay: 0.3s; }
-.letter:nth-child(8) { animation-delay: 0.35s; }
-.letter:nth-child(9) { animation-delay: 0.4s; }
-.letter:nth-child(10) { animation-delay: 0.45s; }
-.letter:nth-child(11) { animation-delay: 0.5s; }
-.letter:nth-child(12) { animation-delay: 0.55s; }
-.letter:nth-child(13) { animation-delay: 0.6s; }
-.letter:nth-child(14) { animation-delay: 0.65s; }
 
 @keyframes bounce {
     0%, 100% { transform: translateY(0) scale(1); }
@@ -1046,6 +1043,339 @@ body {
     .custom-message {
         padding: 12px;
         font-size: 0.9rem;
+    }
+}
+
+
+/* Responsive hardening */
+img,
+video {
+    max-width: 100%;
+}
+
+.hero,
+.gallery,
+.video-gallery,
+.messages,
+.footer {
+    width: 100%;
+}
+
+.birthday-text {
+    max-width: 12ch;
+    line-height: 0.95;
+    text-wrap: balance;
+}
+
+.envelope-container {
+    width: min(100%, 360px);
+}
+
+.envelope {
+    width: min(100%, 320px);
+    height: auto;
+    aspect-ratio: 1.56 / 1;
+}
+
+.birthday-card-container {
+    padding: 16px;
+}
+
+.birthday-card {
+    width: min(600px, calc(100vw - 32px));
+    height: min(650px, calc(100vh - 32px));
+    max-height: calc(100vh - 32px);
+}
+
+.card-front {
+    flex-shrink: 0;
+}
+
+.card-inside {
+    min-height: 0;
+}
+
+.card-message {
+    min-width: 0;
+}
+
+.card-message p,
+.wish-card p,
+.footer p {
+    overflow-wrap: anywhere;
+}
+
+.slideshow-container,
+.video-grid,
+.wishes-container {
+    width: min(100%, 1100px);
+}
+
+.slide-nav {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding: 48px 18px 56px;
+    }
+
+    .birthday-text {
+        font-size: clamp(2.2rem, 10vw, 3.3rem);
+        max-width: 8ch;
+        margin-bottom: 12px;
+        letter-spacing: 1px;
+    }
+
+    .candy-name {
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
+        margin-bottom: 28px;
+    }
+
+    .envelope-container {
+        margin: 28px 0 44px;
+    }
+
+    .birthday-card-container {
+        padding: 14px;
+        align-items: center;
+    }
+
+    .birthday-card {
+        width: min(100%, 620px);
+        height: min(88vh, 700px);
+        max-height: calc(100vh - 28px);
+    }
+
+    .card-front {
+        min-height: 140px;
+    }
+
+    .card-front h2 {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+
+    .card-collage {
+        width: 170px;
+    }
+
+    .card-message {
+        padding: 20px 18px 18px;
+    }
+
+    .card-message p {
+        font-size: 1.05rem;
+        line-height: 1.75;
+    }
+
+    .gallery,
+    .video-gallery,
+    .messages {
+        padding: 64px 18px;
+    }
+
+    .section-title {
+        font-size: clamp(1.9rem, 6vw, 2.5rem);
+        margin-bottom: 44px;
+    }
+
+    .slideshow-wrapper {
+        padding-bottom: 100%;
+    }
+
+    .slide-nav.prev {
+        left: 10px;
+    }
+
+    .slide-nav.next {
+        right: 10px;
+    }
+
+    .video-grid,
+    .wishes-container {
+        gap: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 32px 14px 44px;
+    }
+
+    .birthday-text {
+        font-size: clamp(1.9rem, 12vw, 2.5rem);
+        max-width: none;
+        width: 100%;
+        letter-spacing: 0;
+        gap: 0.1em;
+    }
+
+    .headline-line {
+        display: flex;
+        width: 100%;
+    }
+
+    .headline-line-happy {
+        padding-left: 0.15em;
+    }
+
+    .headline-line-birthday {
+        margin-top: -0.05em;
+        padding-right: 0.15em;
+    }
+
+    .letter {
+        margin: 0 1px;
+    }
+
+    .candy-name {
+        font-size: clamp(1.15rem, 7.2vw, 1.5rem);
+        margin-bottom: 20px;
+    }
+
+    .envelope-container {
+        width: min(100%, 300px);
+        margin: 20px 0 32px;
+    }
+
+    .envelope {
+        width: 100%;
+    }
+
+    .envelope-text {
+        font-size: 0.95rem;
+        padding: 0 14px;
+    }
+
+    .birthday-card-container {
+        padding: 10px;
+        align-items: stretch;
+    }
+
+    .birthday-card {
+        width: 100%;
+        height: min(100%, calc(100vh - 20px));
+        max-height: calc(100vh - 20px);
+        border-width: 3px;
+        border-radius: 18px;
+    }
+
+    .card-front {
+        min-height: 110px;
+        padding: 16px;
+    }
+
+    .card-front h2 {
+        font-size: 1.25rem;
+    }
+
+    .card-inside {
+        flex-direction: column;
+    }
+
+    .card-collage {
+        width: 100%;
+        height: 120px;
+        border-right: none;
+        border-bottom: 3px dashed #ff69b4;
+    }
+
+    .card-message {
+        padding: 14px 14px 18px;
+        gap: 10px;
+    }
+
+    .card-message p {
+        font-size: 0.97rem;
+        line-height: 1.55;
+    }
+
+    .gallery,
+    .video-gallery,
+    .messages {
+        padding: 48px 14px;
+    }
+
+    .section-title {
+        font-size: 1.45rem;
+        margin-bottom: 28px;
+    }
+
+    .slideshow-container {
+        border-radius: 16px;
+    }
+
+    .slideshow-wrapper {
+        padding-bottom: 118%;
+    }
+
+    .slide-nav {
+        top: auto;
+        bottom: 12px;
+        transform: none;
+        padding: 0;
+        font-size: 1rem;
+        background: rgba(255, 105, 180, 0.88);
+    }
+
+    .slide-nav.prev {
+        left: 12px;
+    }
+
+    .slide-nav.next {
+        right: 12px;
+    }
+
+    .slide-indicators {
+        gap: 6px;
+        padding: 14px 52px;
+        flex-wrap: wrap;
+    }
+
+    .video-grid,
+    .wishes-container {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .wish-card {
+        padding: 18px 16px;
+        font-size: 0.96rem;
+    }
+
+    .footer {
+        padding: 28px 14px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .birthday-text {
+        font-size: 1.7rem;
+        max-width: none;
+        gap: 0.06em;
+    }
+
+    .envelope-container {
+        width: min(100%, 272px);
+    }
+
+    .card-front h2 {
+        font-size: 1.1rem;
+    }
+
+    .card-message p {
+        font-size: 0.92rem;
+    }
+
+    .slide-indicators {
+        padding-left: 46px;
+        padding-right: 46px;
     }
 }
 
